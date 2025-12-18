@@ -23,6 +23,7 @@ function App() {
     <main>         
       <TaskForm dispatch={dispatch} />
       <TodoList tasks={tasks} dispatch={dispatch} />
+      <center><p>made with ❤️ by <a href='https://rapha1004.me'>rapha1004</a>. <a href="https://github.com/rapha1004/Simple-to-do-list/">source code</a></p></center>
     </main> 
   )
 }
