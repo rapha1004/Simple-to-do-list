@@ -15,6 +15,7 @@ export default function TodoList({ tasks, dispatch }) {
 
     return (
         <div className="todo-list">
+            
             {filteredTasks.length > 0 ? (
                 <>
                     <ul>
@@ -30,6 +31,12 @@ export default function TodoList({ tasks, dispatch }) {
                         ))}
                     </ul>
                     <div className="actions">
+                        <button onClick={() => dispatch({ type: "REMOVE_COMPLETE" })} className="delete-complete">Delete completed</button>
+                        <button onClick={() => dispatch({ type: "REMOVE_ALL" })} className="delete-all-task">Delete all tasks</button>
+                    </div></>
+            ) : (
+                <>
+                    <div className="actions">
                         <label>
                             <input
                                 type="checkbox"
@@ -38,12 +45,9 @@ export default function TodoList({ tasks, dispatch }) {
                             />
                             Show completed
                         </label>
-
-                        <button onClick={() => dispatch({ type: "REMOVE_COMPLETE" })} className="delete-complete">Delete completed</button>
-                        <button onClick={() => dispatch({ type: "REMOVE_ALL" })} className="delete-all-task">Delete all tasks</button>
-                    </div></>
-            ) : (
+                </div>
                 <h2>Add a new task to get started</h2>
+                </>
             )}
 
 

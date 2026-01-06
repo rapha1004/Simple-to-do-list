@@ -12,8 +12,10 @@ export default function TaskForm({ dispatch }) {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        dispatch({type: "ADD_TODO", payload: taskInput})
-        setTaskInput("")
+        if(taskInput.length != 0) {
+            dispatch({type: "ADD_TODO", payload: taskInput})
+            setTaskInput("")
+        }
     }
 
     return (
