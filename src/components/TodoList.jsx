@@ -9,7 +9,8 @@ export default function TodoList({ tasks, dispatch }) {
 
 
     const filteredTasks = tasks.filter(task => showComplete ? task : !task.checked);
-
+    const hasChecked = tasks.some(task => task.checked);
+    
     console.log(filteredTasks);
 
 
@@ -31,11 +32,20 @@ export default function TodoList({ tasks, dispatch }) {
                         ))}
                     </ul>
                     <div className="actions">
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={showComplete}
+                                onChange={() => setShowComplete(!showComplete)}
+                            />
+                            Show completed
+                        </label>
                         <button onClick={() => dispatch({ type: "REMOVE_COMPLETE" })} className="delete-complete">Delete completed</button>
                         <button onClick={() => dispatch({ type: "REMOVE_ALL" })} className="delete-all-task">Delete all tasks</button>
                     </div></>
             ) : (
                 <>
+                {hasChecked && (
                     <div className="actions">
                         <label>
                             <input
@@ -45,7 +55,8 @@ export default function TodoList({ tasks, dispatch }) {
                             />
                             Show completed
                         </label>
-                </div>
+                    </div>
+                )}
                 <h2>Add a new task to get started</h2>
                 </>
             )}
